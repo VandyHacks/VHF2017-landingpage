@@ -21,15 +21,12 @@ var app = new Vue({
     el: "#app",
     components: { 'typeahead': Typeahead, 'email': EmailField },
     data: {
-        isMounted: false
-    },
-    mounted() {
-        this.isMounted = true;
+        isEmailInputValid: false,
+        isUniversityInputValid: false
     },
     computed: {
         areInputsValid() {
-            return this.isMounted &&
-                this.$refs.emailField.isEmailInputValid && this.$refs.universityAutofill.isUniversityInputValid;
+            return this.isEmailInputValid && this.isUniversityInputValid;
         }
     },
     methods: {

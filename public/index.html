@@ -18,8 +18,8 @@
 				<div id="date" class="dateText"><img src="img/date.svg"></div>
 			</div>
 			<div id="signup" class="signup">
-				<email ref="emailField"></email>
-				<typeahead ref="universityAutofill"></typeahead>
+				<email :valid-email.sync="isEmailInputValid"></email>
+				<typeahead :valid-university.sync="isUniversityInputValid"></typeahead>
 				<input type="submit" value="Get Notified" :disabled="!areInputsValid" v-on:click="registerEmail()">
 			</div>
 		</div>

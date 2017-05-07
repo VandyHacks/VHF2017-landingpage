@@ -16,6 +16,7 @@ export default {
             email: ''
         }
     },
+    props: ['valid-email'],
     computed: {
         emailIndicatorClass() {
             if (this.email.trim() == '') {
@@ -28,6 +29,11 @@ export default {
         },
         isEmailInputValid() {
             return this.email.trim() != '' && EmailValidator.validate(this.email);
+        }
+    },
+    watch: {
+        email(val) {
+            this.$emit('update:valid-email', this.isEmailInputValid);
         }
     },
     mounted() {

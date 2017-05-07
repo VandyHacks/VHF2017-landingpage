@@ -29,6 +29,7 @@ const trie = createTrie(universities, 'name', { splitRegex: splitByHyphen });
 
 export default {
   extends: VueTypeahead,
+  props: ['valid-university'],
   data() {
     return {
       src: '/findunis',
@@ -74,6 +75,11 @@ export default {
     },
     isUniversityInputValid() {
       return this.query.trim() != '' && this.query.length >= 8;
+    }
+  },
+  watch: {
+    query(val) {
+      this.$emit('update:valid-university', this.isUniversityInputValid);
     }
   }
 }
